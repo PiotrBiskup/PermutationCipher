@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -22,9 +24,8 @@ namespace SzyfrPermutacyjny
     {
 
         int keyLenght = 2;
-        List<ComboBox> keys = new List<ComboBox>(10);
-        List<int> keyValues = new List<int>();
-        int key1 , key2, key3, key4, key5, key6, key7, key8, key9, key10;
+        List<TextBox> keyTextBoxList = new List<TextBox>();
+        List<int> keyValueList = new List<int>(9) { 0 , 0, 0, 0, 0, 0, 0 ,0 ,0};
 
 
 
@@ -32,58 +33,242 @@ namespace SzyfrPermutacyjny
         {
             InitializeComponent();
 
-            keys.Add(Key1);
-            keys.Add(Key2);
-            keys.Add(Key3);
-            keys.Add(Key4);
-            keys.Add(Key5);
-            keys.Add(Key6);
-            keys.Add(Key7);
-            keys.Add(Key8);
-            keys.Add(Key9);
-            keys.Add(Key10);
+            keyTextBoxList.Add(keyTexBox1);
+            keyTextBoxList.Add(keyTexBox2);
+            keyTextBoxList.Add(keyTexBox3);
+            keyTextBoxList.Add(keyTexBox4);
+            keyTextBoxList.Add(keyTexBox5);
+            keyTextBoxList.Add(keyTexBox6);
+            keyTextBoxList.Add(keyTexBox7);
+            keyTextBoxList.Add(keyTexBox8);
+            keyTextBoxList.Add(keyTexBox9);
 
-            Key3.Visibility = Visibility.Hidden;
-            Key4.Visibility = Visibility.Hidden;
-            Key5.Visibility = Visibility.Hidden;
-            Key6.Visibility = Visibility.Hidden;
-            Key7.Visibility = Visibility.Hidden;
-            Key8.Visibility = Visibility.Hidden;
-            Key9.Visibility = Visibility.Hidden;
-            Key10.Visibility = Visibility.Hidden;
+            keyTexBox3.Visibility = Visibility.Hidden;
+            keyTexBox4.Visibility = Visibility.Hidden;
+            keyTexBox5.Visibility = Visibility.Hidden;
+            keyTexBox6.Visibility = Visibility.Hidden;
+            keyTexBox7.Visibility = Visibility.Hidden;
+            keyTexBox8.Visibility = Visibility.Hidden;
+            keyTexBox9.Visibility = Visibility.Hidden;
 
             LenghtDropDown.SelectedIndex = 0;
 
         }
-            
-        
+
+        private void NumberValidationTextBox(object sender, TextCompositionEventArgs e)
+        {     
+            Regex regex = new Regex("[^1-9]");
+            e.Handled = regex.IsMatch(e.Text);
+       
+        }
+
 
         private void LenghtDropDown_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var combo = (ComboBox)sender;
             keyLenght = (int)combo.SelectedValue;
 
-            keyValues.Clear();
-
-            for(int i = 1; i <= keyLenght; i++)
+            for(int i = 0; i < 9; i++)
             {
-                keyValues.Add(i);
-            }
-
-            for(int i = 0; i < 10; i++)
-            {
-                if(i < keyLenght)
+                if (i < keyLenght)
                 {
-                    keys[i].Visibility = Visibility.Visible;
-                    keys[i].ItemsSource = keyValues;
-                } else
+                    keyTextBoxList[i].Visibility = Visibility.Visible;
+                }
+                else
                 {
-                    keys[i].Visibility = Visibility.Hidden;
-                    keys[i].ItemsSource = keyValues;
-                    keys[i].Text = "";
+                    keyTextBoxList[i].Visibility = Visibility.Hidden;
                 }
             }
+
+
         }
+
+
+        private void keyTexBox1_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var tb = (TextBox)sender;
+            int key;
+            int.TryParse(tb.Text, out key);
+
+            keyValueList[0] = 0;
+
+            if (key > 0 && key <= keyLenght && !keyValueList.Contains(key))
+            {
+                keyValueList[0] = key;
+                
+            }
+            else
+            {
+                tb.Clear();
+             
+            }
+            
+        }
+
+        private void keyTexBox2_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var tb = (TextBox)sender;
+            int key;
+            int.TryParse(tb.Text, out key);
+
+            keyValueList[1] = 0;
+
+            if (key > 0 && key <= keyLenght && !keyValueList.Contains(key))
+            {
+                keyValueList[1] = key;
+
+            }
+            else
+            {
+                tb.Clear();
+
+            }
+        }
+
+        private void keyTexBox3_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var tb = (TextBox)sender;
+            int key;
+            int.TryParse(tb.Text, out key);
+
+            keyValueList[2] = 0;
+
+            if (key > 0 && key <= keyLenght && !keyValueList.Contains(key))
+            {
+                keyValueList[2] = key;
+
+            }
+            else
+            {
+                tb.Clear();
+
+            }
+        }
+
+        private void keyTexBox4_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var tb = (TextBox)sender;
+            int key;
+            int.TryParse(tb.Text, out key);
+
+            keyValueList[3] = 0;
+
+            if (key > 0 && key <= keyLenght && !keyValueList.Contains(key))
+            {
+                keyValueList[3] = key;
+
+            }
+            else
+            {
+                tb.Clear();
+
+            }
+        }
+
+        private void keyTexBox5_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var tb = (TextBox)sender;
+            int key;
+            int.TryParse(tb.Text, out key);
+
+            keyValueList[4] = 0;
+
+            if (key > 0 && key <= keyLenght && !keyValueList.Contains(key))
+            {
+                keyValueList[4] = key;
+
+            }
+            else
+            {
+                tb.Clear();
+
+            }
+        }
+
+        private void keyTexBox6_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var tb = (TextBox)sender;
+            int key;
+            int.TryParse(tb.Text, out key);
+
+            keyValueList[5] = 0;
+
+            if (key > 0 && key <= keyLenght && !keyValueList.Contains(key))
+            {
+                keyValueList[5] = key;
+
+            }
+            else
+            {
+                tb.Clear();
+
+            }
+        }
+
+        private void keyTexBox7_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var tb = (TextBox)sender;
+            int key;
+            int.TryParse(tb.Text, out key);
+
+            keyValueList[6] = 0;
+
+            if (key > 0 && key <= keyLenght && !keyValueList.Contains(key))
+            {
+                keyValueList[6] = key;
+
+            }
+            else
+            {
+                tb.Clear();
+
+            }
+        }
+
+        private void keyTexBox8_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var tb = (TextBox)sender;
+            int key;
+            int.TryParse(tb.Text, out key);
+
+            keyValueList[7] = 0;
+
+            if (key > 0 && key <= keyLenght && !keyValueList.Contains(key))
+            {
+                keyValueList[7] = key;
+
+            }
+            else
+            {
+                tb.Clear();
+
+            }
+        }
+
+        private void keyTexBox9_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            var tb = (TextBox)sender;
+            int key;
+            int.TryParse(tb.Text, out key);
+
+            keyValueList[8] = 0;
+
+            if (key > 0 && key <= keyLenght && !keyValueList.Contains(key))
+            {
+                keyValueList[8] = key;
+
+            }
+            else
+            {
+                tb.Clear();
+
+            }
+        }
+
+
+
+
+
 
 
 
@@ -95,106 +280,6 @@ namespace SzyfrPermutacyjny
         private void ResetButton_Click(object sender, RoutedEventArgs e)
         {
 
-        }
-
-        private void RefreshKeyValues(int selectedValue)
-        {
-            
-            keyValues.Remove(selectedValue);
-            foreach (ComboBox key in keys)
-            {
-                key.ItemsSource = keyValues;
-            }
-            
-
-        }
-
-        private void RefreshKeyValues()
-        {
-            foreach (ComboBox key in keys)
-            {
-                key.ItemsSource = keyValues;
-            }
-        }
-
-        private void Key1_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var combo = (ComboBox)sender;
-            key1 = (int)combo.SelectedValue;
-
-            RefreshKeyValues(key1);
-        }
-
-        private void Key2_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var combo = (ComboBox)sender;
-            key2 = (int)combo.SelectedValue;
-
-            RefreshKeyValues(key2);
-        }
-
-        private void Key3_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var combo = (ComboBox)sender;
-            key3 = (int)combo.SelectedValue;
-
-            RefreshKeyValues(key3);
-        }
-
-        private void Key4_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var combo = (ComboBox)sender;
-            key4 = (int)combo.SelectedValue;
-
-            RefreshKeyValues(key4);
-        }
-
-        private void Key5_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var combo = (ComboBox)sender;
-            key5 = (int)combo.SelectedValue;
-
-            RefreshKeyValues(key5);
-        }
-
-        private void Key6_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var combo = (ComboBox)sender;
-            key6 = (int)combo.SelectedValue;
-
-            RefreshKeyValues(key6);
-        }
-
-        private void Key7_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var combo = (ComboBox)sender;
-            key7 = (int)combo.SelectedValue;
-
-            RefreshKeyValues(key7);
-        }
-
-        private void Key8_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var combo = (ComboBox)sender;
-            key8 = (int)combo.SelectedValue;
-
-            RefreshKeyValues(key8);
-        }
-
-        private void Key9_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var combo = (ComboBox)sender;
-            key9 = (int)combo.SelectedValue;
-
-            RefreshKeyValues(key9);
-        }
-
-        private void Key10_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            var combo = (ComboBox)sender;
-            key10 = (int)combo.SelectedValue;
-
-            RefreshKeyValues(key10);
         }
     }
 }

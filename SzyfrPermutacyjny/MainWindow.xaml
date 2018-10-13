@@ -11,7 +11,7 @@
     <Border Padding="10">
         <StackPanel>
 
-            <TextBlock Text="Choose your cipher key lenght: (min: 2 max: 10)" FontWeight="Bold"></TextBlock>
+            <TextBlock Text="Choose your cipher key lenght: (min: 2 max: 9)" FontWeight="Bold"></TextBlock>
             <ComboBox x:Name="LenghtDropDown" SelectionChanged="LenghtDropDown_SelectionChanged" Margin="5 10 640 20" Padding="3">
                 <ComboBox.ItemsSource>
                     <x:Array Type="{x:Type sys:Int32}">
@@ -23,7 +23,6 @@
                         <sys:Int32>7</sys:Int32>
                         <sys:Int32>8</sys:Int32>
                         <sys:Int32>9</sys:Int32>
-                        <sys:Int32>10</sys:Int32>
                     </x:Array>
                 </ComboBox.ItemsSource>
             </ComboBox>
@@ -41,68 +40,54 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
+                    
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0">
-                    
-                    <ComboBox x:Name="Key1" SelectionChanged="Key1_SelectionChanged" Padding="3" Margin="5 10  10 5">
-                    </ComboBox>
+                    <TextBox TextChanged="keyTexBox1_TextChanged" x:Name="keyTexBox1" Padding="3" Margin="5 0 5 0" RenderTransformOrigin="0.503,0.5" PreviewTextInput="NumberValidationTextBox"></TextBox>
+
                 </StackPanel>
 
                 <StackPanel Grid.Column="1">
+                    <TextBox TextChanged="keyTexBox2_TextChanged" x:Name="keyTexBox2" Padding="3" Margin="5 0 5 0" PreviewTextInput="NumberValidationTextBox"></TextBox>
                     
-                    <ComboBox x:Name="Key2" SelectionChanged="Key2_SelectionChanged" Padding="3" Margin="5 10 10 5">
-                    </ComboBox>
                 </StackPanel>
 
                 <StackPanel Grid.Column="2">
-                   
-                    <ComboBox x:Name="Key3" SelectionChanged="Key3_SelectionChanged" Padding="3" Margin="5 10 10 5">
-                    </ComboBox>
+                    <TextBox TextChanged="keyTexBox3_TextChanged" x:Name="keyTexBox3" Padding="3" Margin="5 0 5 0" PreviewTextInput="NumberValidationTextBox"></TextBox>
                 </StackPanel>
 
                 <StackPanel Grid.Column="3">
+                    <TextBox TextChanged="keyTexBox4_TextChanged" x:Name="keyTexBox4" Padding="3" Margin="5 0 5 0" PreviewTextInput="NumberValidationTextBox"></TextBox>
                     
-                    <ComboBox x:Name="Key4" SelectionChanged="Key4_SelectionChanged" Padding="3" Margin="5 10 10 5">
-                    </ComboBox>
                 </StackPanel>
 
                 <StackPanel Grid.Column="4">
+                    <TextBox TextChanged="keyTexBox5_TextChanged" x:Name="keyTexBox5" Padding="3" Margin="5 0 5 0" PreviewTextInput="NumberValidationTextBox"></TextBox>
                     
-                    <ComboBox x:Name="Key5" SelectionChanged="Key5_SelectionChanged" Padding="3" Margin="5 10 10 5">
-                    </ComboBox>
                 </StackPanel>
 
                 <StackPanel Grid.Column="5">
+                    <TextBox TextChanged="keyTexBox6_TextChanged" x:Name="keyTexBox6" Padding="3" Margin="5 0 5 0" PreviewTextInput="NumberValidationTextBox"></TextBox>
                     
-                    <ComboBox x:Name="Key6" SelectionChanged="Key6_SelectionChanged" Padding="3" Margin="5 10 10 5">
-                    </ComboBox>
                 </StackPanel>
 
                 <StackPanel Grid.Column="6">
-                   
-                    <ComboBox x:Name="Key7" SelectionChanged="Key7_SelectionChanged" Padding="3" Margin="5 10 10 5">
-                    </ComboBox>
+                    <TextBox TextChanged="keyTexBox7_TextChanged" x:Name="keyTexBox7" Padding="3" Margin="5 0 5 0" PreviewTextInput="NumberValidationTextBox"></TextBox>
+
                 </StackPanel>
 
                 <StackPanel Grid.Column="7">
-                    
-                    <ComboBox x:Name="Key8" SelectionChanged="Key8_SelectionChanged" Padding="3" Margin="5 10 10 5">
-                    </ComboBox>
+                    <TextBox TextChanged="keyTexBox8_TextChanged" x:Name="keyTexBox8" Padding="3" Margin="5 0 5 0" PreviewTextInput="NumberValidationTextBox"></TextBox>
+
                 </StackPanel>
 
                 <StackPanel Grid.Column="8">
-                    
-                    <ComboBox x:Name="Key9" SelectionChanged="Key9_SelectionChanged" Padding="3" Margin="5 10 10 5">
-                    </ComboBox>
+
+                    <TextBox TextChanged="keyTexBox9_TextChanged" x:Name="keyTexBox9" Padding="3" Margin="5 0 5 0" PreviewTextInput="NumberValidationTextBox"></TextBox>
                 </StackPanel>
 
-                <StackPanel Grid.Column="9">
-                    
-                    <ComboBox x:Name="Key10" SelectionChanged="Key10_SelectionChanged" Padding="3" Margin="5 10 10 5">
-                    </ComboBox>
-                </StackPanel>
+                
             </Grid>
 
             
