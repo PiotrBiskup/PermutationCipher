@@ -111,7 +111,9 @@
                     <Button x:Name="ResetButton" Click="ResetButton_Click" Content="Reset" Margin="100 0 100 0"></Button>
                 </StackPanel>
             </Grid>
-            
+
+            <TextBox x:Name="EncryptedTextBox" Padding="3" IsReadOnly="True" ></TextBox>
+
         </StackPanel>
     </Border>
 </Window>

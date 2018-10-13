@@ -332,6 +332,10 @@ namespace SzyfrPermutacyjny
 
         private void EncryptButton_Click(object sender, RoutedEventArgs e)
         {
+            if(isKeyCompleted)
+            {
+                EncryptedTextBox.Text = Encrypt(TypedTextToEncrypt.Text);
+            }
 
         }
 
@@ -341,6 +345,7 @@ namespace SzyfrPermutacyjny
             ClearKeyTextBox();
             ShowRemainingDigits();
             TypedTextToEncrypt.Clear();
+            EncryptedTextBox.Clear();
 
 
         }
@@ -348,14 +353,41 @@ namespace SzyfrPermutacyjny
         private String Encrypt(String stringToEncrypt)
         {
             int counter = 0;
-            String EncryptedText;
-            List<char> charList = new List<char>(keyLenght);
+            String EncryptedText = "";
+            List<char> tempcharList = new List<char>();
+            List<char> tempEncryptedCharList = new List<char>() { '0', '0'};
 
-            while (counter < stringToEncrypt.Length)
+            for (int i = 0; i < stringToEncrypt.Length; i++)
             {
-                for(int i = 0; i < keyLenght
+                tempcharList.Add(stringToEncrypt[i]);
+                counter++;
+                if(counter == keyLenght)
+                {
+                    
+                    for (int j = 0; j < tempcharList.Count; j++)
+                    {
+                        tempEncryptedCharList[keyValueList[j]] = tempcharList[j];
+                    }
+
+                    for(int y = 0; y < tempEncryptedCharList.Count; y++)
+                    {
+                        EncryptedText += tempEncryptedCharList[y];
+                    }
+
+                    counter = 0;
+                    tempcharList.Clear();
+                    tempEncryptedCharList.Clear();
+
+                }
             }
 
+            if(tempcharList.Count != 0)
+            {
+                for(int i = 0; i < tempcharList.Count; i++)
+                {
+                    EncryptedText += tempcharList[i];
+                }
+            }
 
             return EncryptedText;
         }
