@@ -345,9 +345,19 @@ namespace SzyfrPermutacyjny
 
         }
 
-        private void Encrypt()
+        private String Encrypt(String stringToEncrypt)
         {
+            int counter = 0;
+            String EncryptedText;
+            List<char> charList = new List<char>(keyLenght);
 
+            while (counter < stringToEncrypt.Length)
+            {
+                for(int i = 0; i < keyLenght
+            }
+
+
+            return EncryptedText;
         }
     }
 }
