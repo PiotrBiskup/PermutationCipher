@@ -26,9 +26,9 @@ namespace SzyfrPermutacyjny
         int keyLenght = 2;
         List<TextBox> keyTextBoxList = new List<TextBox>();
         List<int> keyValueList = new List<int>(9) { 0 , 0, 0, 0, 0, 0, 0 ,0 ,0};
-
-
-
+        Boolean isKeyCompleted = false;
+        
+    
         public MainWindow()
         {
             InitializeComponent();
@@ -42,6 +42,7 @@ namespace SzyfrPermutacyjny
             keyTextBoxList.Add(keyTexBox7);
             keyTextBoxList.Add(keyTexBox8);
             keyTextBoxList.Add(keyTexBox9);
+
 
             keyTexBox3.Visibility = Visibility.Hidden;
             keyTexBox4.Visibility = Visibility.Hidden;
@@ -62,13 +63,59 @@ namespace SzyfrPermutacyjny
        
         }
 
+        private void ShowRemainingDigits()
+        {
+            int countRemainingDigits = 0;
+            string remainingDigits = "Remaining digits: ";
+            for (int i = 1; i <= keyLenght; i++)
+            {
+                if (!keyValueList.Contains(i))
+                {
+                    remainingDigits += " [" + i + "]";
+                    countRemainingDigits++;
+                }
+            }
+            if(countRemainingDigits != 0)
+            {
+                TextBlockRemainingDigits.Text = remainingDigits;
+                isKeyCompleted = false;
+
+            } else
+            {
+                TextBlockRemainingDigits.Text = "Your key is complete!";
+                isKeyCompleted = true;
+            }
+            
+        }
+
+        private void ClearKeyTextBox()
+        {
+            foreach(TextBox textBox in keyTextBoxList)
+            {
+                textBox.Clear();
+            }
+        }
+
+        private void ClearKeys()
+        {
+           for (int i = 0; i < 9; i++)
+            {
+                keyValueList[i] = 0;
+            }
+        }
+
 
         private void LenghtDropDown_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             var combo = (ComboBox)sender;
             keyLenght = (int)combo.SelectedValue;
 
-            for(int i = 0; i < 9; i++)
+            ClearKeyTextBox();
+            ClearKeys();
+
+            ShowRemainingDigits();
+
+            for (int i = 0; i < 9; i++)
             {
                 if (i < keyLenght)
                 {
@@ -95,12 +142,14 @@ namespace SzyfrPermutacyjny
             if (key > 0 && key <= keyLenght && !keyValueList.Contains(key))
             {
                 keyValueList[0] = key;
-                
+                ShowRemainingDigits();
+
             }
             else
             {
                 tb.Clear();
-             
+                ShowRemainingDigits();
+
             }
             
         }
@@ -116,11 +165,13 @@ namespace SzyfrPermutacyjny
             if (key > 0 && key <= keyLenght && !keyValueList.Contains(key))
             {
                 keyValueList[1] = key;
+                ShowRemainingDigits();
 
             }
             else
             {
                 tb.Clear();
+                ShowRemainingDigits();
 
             }
         }
@@ -136,11 +187,13 @@ namespace SzyfrPermutacyjny
             if (key > 0 && key <= keyLenght && !keyValueList.Contains(key))
             {
                 keyValueList[2] = key;
+                ShowRemainingDigits();
 
             }
             else
             {
                 tb.Clear();
+                ShowRemainingDigits();
 
             }
         }
@@ -156,11 +209,13 @@ namespace SzyfrPermutacyjny
             if (key > 0 && key <= keyLenght && !keyValueList.Contains(key))
             {
                 keyValueList[3] = key;
+                ShowRemainingDigits();
 
             }
             else
             {
                 tb.Clear();
+                ShowRemainingDigits();
 
             }
         }
@@ -176,11 +231,13 @@ namespace SzyfrPermutacyjny
             if (key > 0 && key <= keyLenght && !keyValueList.Contains(key))
             {
                 keyValueList[4] = key;
+                ShowRemainingDigits();
 
             }
             else
             {
                 tb.Clear();
+                ShowRemainingDigits();
 
             }
         }
@@ -196,11 +253,13 @@ namespace SzyfrPermutacyjny
             if (key > 0 && key <= keyLenght && !keyValueList.Contains(key))
             {
                 keyValueList[5] = key;
+                ShowRemainingDigits();
 
             }
             else
             {
                 tb.Clear();
+                ShowRemainingDigits();
 
             }
         }
@@ -216,11 +275,13 @@ namespace SzyfrPermutacyjny
             if (key > 0 && key <= keyLenght && !keyValueList.Contains(key))
             {
                 keyValueList[6] = key;
+                ShowRemainingDigits();
 
             }
             else
             {
                 tb.Clear();
+                ShowRemainingDigits();
 
             }
         }
@@ -236,11 +297,13 @@ namespace SzyfrPermutacyjny
             if (key > 0 && key <= keyLenght && !keyValueList.Contains(key))
             {
                 keyValueList[7] = key;
+                ShowRemainingDigits();
 
             }
             else
             {
                 tb.Clear();
+                ShowRemainingDigits();
 
             }
         }
@@ -256,28 +319,33 @@ namespace SzyfrPermutacyjny
             if (key > 0 && key <= keyLenght && !keyValueList.Contains(key))
             {
                 keyValueList[8] = key;
+                ShowRemainingDigits();
 
             }
             else
             {
                 tb.Clear();
+                ShowRemainingDigits();
 
             }
         }
 
-
-
-
-
-
-
-
-        private void ApplyButton_Click(object sender, RoutedEventArgs e)
+        private void EncryptButton_Click(object sender, RoutedEventArgs e)
         {
 
         }
 
         private void ResetButton_Click(object sender, RoutedEventArgs e)
+        {
+            ClearKeys();
+            ClearKeyTextBox();
+            ShowRemainingDigits();
+            TypedTextToEncrypt.Clear();
+
+
+        }
+
+        private void Encrypt()
         {
 
         }
