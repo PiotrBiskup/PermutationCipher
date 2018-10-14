@@ -355,7 +355,12 @@ namespace SzyfrPermutacyjny
             int counter = 0;
             String EncryptedText = "";
             List<char> tempcharList = new List<char>();
-            List<char> tempEncryptedCharList = new List<char>() { '0', '0'};
+            List<char> tempEncryptedCharList = new List<char>(keyLenght);
+
+            for(int y =0; y < keyLenght; y++)
+            {
+                tempEncryptedCharList.Add('0');
+            }
 
             for (int i = 0; i < stringToEncrypt.Length; i++)
             {
@@ -366,7 +371,7 @@ namespace SzyfrPermutacyjny
                     
                     for (int j = 0; j < tempcharList.Count; j++)
                     {
-                        tempEncryptedCharList[keyValueList[j]] = tempcharList[j];
+                        tempEncryptedCharList[keyValueList[j]-1] = tempcharList[j];
                     }
 
                     for(int y = 0; y < tempEncryptedCharList.Count; y++)
@@ -376,7 +381,7 @@ namespace SzyfrPermutacyjny
 
                     counter = 0;
                     tempcharList.Clear();
-                    tempEncryptedCharList.Clear();
+                    
 
                 }
             }
