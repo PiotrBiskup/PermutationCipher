@@ -403,6 +403,7 @@ namespace SzyfrPermutacyjny
                         EncryptedText += tempEncryptedCharList[y];
                     }
 
+                   
                     counter = 0;
                     tempcharList.Clear();
                     

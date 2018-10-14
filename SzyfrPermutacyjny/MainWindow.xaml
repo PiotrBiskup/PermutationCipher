@@ -63,12 +63,12 @@
                 </StackPanel>
 
                 <StackPanel Grid.Column="4">
-                    <TextBox TextChanged="keyTexBox5_TextChanged" x:Name="keyTexBox5" Padding="3" Margin="5 0 5 0" PreviewTextInput="NumberValidationTextBox"></TextBox>
+                    <TextBox TextAlignment="Center" TextChanged="keyTexBox5_TextChanged" x:Name="keyTexBox5" Padding="3" Margin="5 0 5 0" PreviewTextInput="NumberValidationTextBox"></TextBox>
                     
                 </StackPanel>
 
                 <StackPanel Grid.Column="5">
-                    <TextBox TextChanged="keyTexBox6_TextChanged" x:Name="keyTexBox6" Padding="3" Margin="5 0 5 0" PreviewTextInput="NumberValidationTextBox"></TextBox>
+                    <TextBox TextAlignment="Center" TextChanged="keyTexBox6_TextChanged" x:Name="keyTexBox6" Padding="3" Margin="5 0 5 0" PreviewTextInput="NumberValidationTextBox"></TextBox>
                     
                 </StackPanel>
 
