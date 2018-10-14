@@ -12,7 +12,7 @@
         <StackPanel>
 
             <TextBlock Text="Choose your permutation cipher key lenght: (min: 2 max: 9)" FontWeight="Bold"></TextBlock>
-            <ComboBox x:Name="LenghtDropDown" SelectionChanged="LenghtDropDown_SelectionChanged" Margin="5 10 640 20" Padding="3">
+            <ComboBox x:Name="LenghtDropDown" SelectionChanged="LenghtDropDown_SelectionChanged" Margin="0 10 0 20" Padding="3" Width="40" HorizontalAlignment="Left">
                 <ComboBox.ItemsSource>
                     <x:Array Type="{x:Type sys:Int32}">
                         <sys:Int32>2</sys:Int32>
@@ -44,21 +44,21 @@
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0">
-                    <TextBox TextChanged="keyTexBox1_TextChanged" x:Name="keyTexBox1" Padding="3" Margin="5 0 5 0" RenderTransformOrigin="0.503,0.5" PreviewTextInput="NumberValidationTextBox"></TextBox>
+                    <TextBox TextAlignment="Center" TextChanged="keyTexBox1_TextChanged" x:Name="keyTexBox1" Padding="3" Margin="5 0 5 0" RenderTransformOrigin="0.503,0.5" PreviewTextInput="NumberValidationTextBox"></TextBox>
 
                 </StackPanel>
 
                 <StackPanel Grid.Column="1">
-                    <TextBox TextChanged="keyTexBox2_TextChanged" x:Name="keyTexBox2" Padding="3" Margin="5 0 5 0" PreviewTextInput="NumberValidationTextBox"></TextBox>
+                    <TextBox TextAlignment="Center" TextChanged="keyTexBox2_TextChanged" x:Name="keyTexBox2" Padding="3" Margin="5 0 5 0" PreviewTextInput="NumberValidationTextBox"></TextBox>
                     
                 </StackPanel>
 
                 <StackPanel Grid.Column="2">
-                    <TextBox TextChanged="keyTexBox3_TextChanged" x:Name="keyTexBox3" Padding="3" Margin="5 0 5 0" PreviewTextInput="NumberValidationTextBox"></TextBox>
+                    <TextBox TextAlignment="Center" TextChanged="keyTexBox3_TextChanged" x:Name="keyTexBox3" Padding="3" Margin="5 0 5 0" PreviewTextInput="NumberValidationTextBox"></TextBox>
                 </StackPanel>
 
                 <StackPanel Grid.Column="3">
-                    <TextBox TextChanged="keyTexBox4_TextChanged" x:Name="keyTexBox4" Padding="3" Margin="5 0 5 0" PreviewTextInput="NumberValidationTextBox"></TextBox>
+                    <TextBox TextAlignment="Center" TextChanged="keyTexBox4_TextChanged" x:Name="keyTexBox4" Padding="3" Margin="5 0 5 0" PreviewTextInput="NumberValidationTextBox"></TextBox>
                     
                 </StackPanel>
 
@@ -73,18 +73,18 @@
                 </StackPanel>
 
                 <StackPanel Grid.Column="6">
-                    <TextBox TextChanged="keyTexBox7_TextChanged" x:Name="keyTexBox7" Padding="3" Margin="5 0 5 0" PreviewTextInput="NumberValidationTextBox"></TextBox>
+                    <TextBox TextAlignment="Center" TextChanged="keyTexBox7_TextChanged" x:Name="keyTexBox7" Padding="3" Margin="5 0 5 0" PreviewTextInput="NumberValidationTextBox"></TextBox>
 
                 </StackPanel>
 
                 <StackPanel Grid.Column="7">
-                    <TextBox TextChanged="keyTexBox8_TextChanged" x:Name="keyTexBox8" Padding="3" Margin="5 0 5 0" PreviewTextInput="NumberValidationTextBox"></TextBox>
+                    <TextBox TextAlignment="Center" TextChanged="keyTexBox8_TextChanged" x:Name="keyTexBox8" Padding="3" Margin="5 0 5 0" PreviewTextInput="NumberValidationTextBox"></TextBox>
 
                 </StackPanel>
 
                 <StackPanel Grid.Column="8">
 
-                    <TextBox TextChanged="keyTexBox9_TextChanged" x:Name="keyTexBox9" Padding="3" Margin="5 0 5 0" PreviewTextInput="NumberValidationTextBox"></TextBox>
+                    <TextBox TextAlignment="Center" TextChanged="keyTexBox9_TextChanged" x:Name="keyTexBox9" Padding="3" Margin="5 0 5 0" PreviewTextInput="NumberValidationTextBox"></TextBox>
                 </StackPanel>
 
                 
