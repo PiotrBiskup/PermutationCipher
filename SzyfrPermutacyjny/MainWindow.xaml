@@ -94,7 +94,7 @@
 
             <!-- Wprowadzanie tekstu -->
             <TextBlock Text="Type text you want to encrypt / decrypt:" FontWeight="Bold" Margin="0 0 0 10"></TextBlock>
-            <TextBox x:Name="TypedTextToEncrypt" Height="100" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" IsEnabled="True" Padding="3"></TextBox>
+            <TextBox x:Name="TypedTextToEncrypt" Height="100" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" IsEnabled="True" AcceptsReturn="True" Padding="3"></TextBox>
            
             <Grid Margin="0 30 0 5">
                 <Grid.ColumnDefinitions>
@@ -125,7 +125,7 @@
 
             <TextBlock Text="Encryption / decryption output:" FontWeight="Bold" Padding="3" Margin="0 0 0 5"></TextBlock>
             <TextBox x:Name="EncryptedTextBox" Padding="3" IsReadOnly="True" Height="100" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" ></TextBox>
-            <Button Content="Save output to file" Width="150" HorizontalAlignment="Left" Margin="0 10 0 0"></Button>
+            <Button x:Name="SaveToFileButton" Click="SaveToFileButton_Click" Content="Save output to file" Width="150" HorizontalAlignment="Left" Margin="0 10 0 0"></Button>
         </StackPanel>
     </Border>
 </Window>

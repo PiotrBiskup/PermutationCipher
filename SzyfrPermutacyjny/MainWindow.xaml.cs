@@ -350,6 +350,16 @@ namespace SzyfrPermutacyjny
 
         private void DecryptButton_Click(object sender, RoutedEventArgs e)
         {
+            EncryptedTextBox.Clear();
+
+            if (isKeyCompleted)
+            {
+                EncryptedTextBox.Text = Decrypt(TypedTextToEncrypt.Text);
+            }
+            else
+            {
+                HintsTextBlock.Text = "Complete your key!";
+            }
 
         }
 
@@ -411,6 +421,51 @@ namespace SzyfrPermutacyjny
             return EncryptedText;
         }
 
+        private String Decrypt(String stringToDecrypt)
+        {
+            int counter = 0;
+            String EncryptedText = "";
+            List<char> tempcharList = new List<char>();
+            List<char> tempEncryptedCharList = new List<char>(keyLenght);
+
+            for (int y = 0; y < keyLenght; y++)
+            {
+                tempEncryptedCharList.Add('0');
+            }
+
+            for(int i = 0; i < stringToDecrypt.Length; i++)
+            {
+                tempcharList.Add(stringToDecrypt[i]);
+                counter++;
+                if (counter == keyLenght)
+                {
+                    for(int j = 0; j < tempcharList.Count; j++)
+                    {
+                        tempEncryptedCharList[j] = tempcharList[keyValueList[j]-1];
+                    }
+
+                    for (int y = 0; y < tempEncryptedCharList.Count; y++)
+                    {
+                        EncryptedText += tempEncryptedCharList[y];
+                    }
+
+                    counter = 0;
+                    tempcharList.Clear();
+                }
+            }
+
+            if (tempcharList.Count != 0)
+            {
+                for (int i = 0; i < tempcharList.Count; i++)
+                {
+                    EncryptedText += tempcharList[i];
+                }
+            }
+
+            return EncryptedText;
+        }
+
+
         private void LoadFromFileButton_Click(object sender, RoutedEventArgs e)
         {
             OpenFileDialog ofd = new OpenFileDialog();
@@ -424,7 +479,20 @@ namespace SzyfrPermutacyjny
                 {
                     Console.WriteLine(i + " : " + file[i]);
                 }*/
+
                 TypedTextToEncrypt.Text = File.ReadAllText(ofd.FileName);
+            }
+        }
+
+        private void SaveToFileButton_Click(object sender, RoutedEventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog();
+            sfd.DefaultExt = ".txt";
+            sfd.Filter = "Text documents (.txt)|*.txt";
+
+            if (sfd.ShowDialog() == true)
+            {
+                File.WriteAllText(sfd.FileName, EncryptedTextBox.Text);
             }
         }
     }
