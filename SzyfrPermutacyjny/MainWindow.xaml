@@ -11,7 +11,7 @@
     <Border Padding="10">
         <StackPanel>
 
-            <TextBlock Text="Choose your cipher key lenght: (min: 2 max: 9)" FontWeight="Bold"></TextBlock>
+            <TextBlock Text="Choose your permutation cipher key lenght: (min: 2 max: 9)" FontWeight="Bold"></TextBlock>
             <ComboBox x:Name="LenghtDropDown" SelectionChanged="LenghtDropDown_SelectionChanged" Margin="5 10 640 20" Padding="3">
                 <ComboBox.ItemsSource>
                     <x:Array Type="{x:Type sys:Int32}">
@@ -93,27 +93,39 @@
             <TextBlock x:Name="TextBlockRemainingDigits" TextAlignment="Center" Padding="3" Margin="0 5 0 0"></TextBlock>
 
             <!-- Wprowadzanie tekstu -->
-
-            <TextBlock Text="Type text you want to encrypt:" FontWeight="Bold" Margin="0 20 0 10"></TextBlock>
-            <TextBox x:Name="TypedTextToEncrypt" IsEnabled="True" Padding="3"></TextBox>
-
-            <Grid Margin="0 20 0 20">
+            <TextBlock Text="Type text you want to encrypt / decrypt:" FontWeight="Bold" Margin="0 0 0 10"></TextBlock>
+            <TextBox x:Name="TypedTextToEncrypt" Height="100" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" IsEnabled="True" Padding="3"></TextBox>
+           
+            <Grid Margin="0 30 0 5">
                 <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*"/>
+                    <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
                 <StackPanel Grid.Column="0">
-                    <Button x:Name="EncryptButton" Click="EncryptButton_Click" Content="Encrypt" Margin="100 0 100 0"></Button>
+                    <Button x:Name="EncryptButton" Click="EncryptButton_Click" Content="Encrypt" Margin="30 0 30 0"></Button>
+                </StackPanel>
+
+                <StackPanel Grid.Column="3">
+                    <Button x:Name="ResetButton" Click="ResetButton_Click" Content="Reset" Margin="30 0 30 0"></Button>
                 </StackPanel>
 
                 <StackPanel Grid.Column="1">
-                    <Button x:Name="ResetButton" Click="ResetButton_Click" Content="Reset" Margin="100 0 100 0"></Button>
+                    <Button x:Name="DecryptButton" Click="DecryptButton_Click"  Content="Decrypt" Margin="30 0 30 0"></Button>
+                </StackPanel>
+
+                <StackPanel Grid.Column="2">
+                    <Button x:Name="LoadFromFileButton" Click="LoadFromFileButton_Click"  Content="Load from file" Margin="30 0 30 0"></Button>
                 </StackPanel>
             </Grid>
 
-            <TextBox x:Name="EncryptedTextBox" Padding="3" IsReadOnly="True" ></TextBox>
+            <TextBlock x:Name="HintsTextBlock" TextAlignment="Center" Padding="3" Margin="0 5 0 20"></TextBlock>
 
+            <TextBlock Text="Encryption / decryption output:" FontWeight="Bold" Padding="3" Margin="0 0 0 5"></TextBlock>
+            <TextBox x:Name="EncryptedTextBox" Padding="3" IsReadOnly="True" Height="100" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" ></TextBox>
+            <Button Content="Save output to file" Width="150" HorizontalAlignment="Left" Margin="0 10 0 0"></Button>
         </StackPanel>
     </Border>
 </Window>

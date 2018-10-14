@@ -14,6 +14,8 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using System.IO;
+using Microsoft.Win32;
 
 namespace SzyfrPermutacyjny
 {
@@ -83,6 +85,7 @@ namespace SzyfrPermutacyjny
             } else
             {
                 TextBlockRemainingDigits.Text = "Your key is complete!";
+                HintsTextBlock.Text = "";
                 isKeyCompleted = true;
             }
             
@@ -332,10 +335,21 @@ namespace SzyfrPermutacyjny
 
         private void EncryptButton_Click(object sender, RoutedEventArgs e)
         {
+            EncryptedTextBox.Clear();
+
             if(isKeyCompleted)
             {
                 EncryptedTextBox.Text = Encrypt(TypedTextToEncrypt.Text);
             }
+            else
+            {
+                HintsTextBlock.Text = "Complete your key!";
+            }
+
+        }
+
+        private void DecryptButton_Click(object sender, RoutedEventArgs e)
+        {
 
         }
 
@@ -395,6 +409,23 @@ namespace SzyfrPermutacyjny
             }
 
             return EncryptedText;
+        }
+
+        private void LoadFromFileButton_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.DefaultExt = ".txt";
+            ofd.Filter = "Text documents (.txt)|*.txt";
+
+            if (ofd.ShowDialog() == true)
+            {
+               /* String file = File.ReadAllText(ofd.FileName);
+                for(int i = 0; i < file.Length; i++)
+                {
+                    Console.WriteLine(i + " : " + file[i]);
+                }*/
+                TypedTextToEncrypt.Text = File.ReadAllText(ofd.FileName);
+            }
         }
     }
 }
