@@ -35,7 +35,7 @@ namespace SzyfrPermutacyjny
         {
             InitializeComponent();
 
-            opistextBlock.Text = "Permutation Cipher jest to program, który pozwala na szyfrowanie i deszyfrowanie tekstu zgodnie z działaniem szyfru permutacyjnego o podanym kluczu. \n\nZasada działania szyfru permutacyjnego: teskt wejściowy dzielimy na n-elementowe łańcuchy znaków, gdzie n to długość klucza. Każdy element klucza musi być z przedziału ( 0, dlugosc_klucza > i elementy nie mogą się powtarzać. Wartość elementu klucza oznacza nowy indeks dla odpowiadającego mu elementu z n-elementowego łańcucha znaków. Elementy, które należą do reszty z dzielenia z wprowadzonego tekstu i długości klucza nie będą szyfrowane, ponieważ klucz zawiera wtedy indeksy, która są poza zasięgiem tej reszty.\n\nZasada działania programu: \n1. Wybierz długość klucza - minimalny 2, maksymalny 9.\n2. Wprowadź elementy klucza - program w czasie rzeczywistym sprawdza, czy wprowadzone dane są poprawne (akceptuje tylko znaki numeryczne, a wartości z poza prawidłowego przedziału są usuwane). Poniżej wyświetlana jest zawsze lista możliwych do wpisania liczb.\n3. Wprowadź lub wczytaj z pliku tekst (za pomocą przycisku \"Load from file\"), który chcesz szyfrować/zdeszyfrować. Dozwolone są wszystkie znaki.\n4. Kliknij na przycisk Encrypt/Decrypt w zależności co chcesz osiągnąć. Przyciski działają tylko jeżeli uzupełniony jest klucz. Program wyświetli odpowiedni komunikat w przypadku błędu.\n5. Zaszyfrowany/zdeszyfrowany teskt wyświetla się w oznaczonym TextBox'ie i moża go zapisać do pliku za pomocą przycisku \"Save output to file\".\n6. Przycisk \"Reset\" pozwala na wyczyszczenie wszystkich pól.";
+            opistextBlock.Text = "Permutation Cipher jest to program, który pozwala na szyfrowanie i deszyfrowanie tekstu zgodnie z działaniem szyfru permutacyjnego o podanym kluczu. \n\nZasada działania szyfru permutacyjnego: teskt wejściowy dzielimy na n-elementowe łańcuchy znaków, gdzie n to długość klucza. Każdy element klucza musi być z przedziału ( 0, dlugosc_klucza > i elementy nie mogą się powtarzać. Wartość elementu klucza oznacza nowy indeks dla odpowiadającego mu elementu z n-elementowego łańcucha znaków. Elementy, które należą do resz\n\nZasada działania programu: \n1. Wybierz długość klucza - minimalny 2, maksymalny 9.\n2. Wprowadź elementy klucza - program w czasie rzeczywistym sprawdza, czy wprowadzone dane są poprawne (akceptuje tylko znaki numeryczne, a wartości z poza prawidłowego przedziału są usuwane). Poniżej wyświetlana jest zawsze lista możliwych do wpisania liczb.\n3. Wprowadź lub wczytaj z pliku tekst (za pomocą przycisku \"Load from file\"), który chcesz szyfrować/zdeszyfrować. Dozwolone są wszystkie znaki.\n4. Kliknij na przycisk Encrypt/Decrypt w zależności co chcesz osiągnąć. Przyciski działają tylko jeżeli uzupełniony jest klucz. Program wyświetli odpowiedni komunikat w przypadku błędu.\n5. Zaszyfrowany/zdeszyfrowany teskt wyświetla się w oznaczonym TextBox'ie i moża go zapisać do pliku za pomocą przycisku \"Save output to file\".\n6. Przycisk \"Reset\" pozwala na wyczyszczenie wszystkich pól.";
 
             keyTextBoxList.Add(keyTexBox1);
             keyTextBoxList.Add(keyTexBox2);
@@ -413,13 +413,26 @@ namespace SzyfrPermutacyjny
                 }
             }
 
+            Console.WriteLine("dlugosc: " + tempcharList.Count);
+
             if(tempcharList.Count != 0)
             {
-                for(int i = 0; i < tempcharList.Count; i++)
+                String tempRest = "";
+
+                for (int i = 0; i < keyLenght - tempcharList.Count; i++)
                 {
-                    EncryptedText += tempcharList[i];
+                    tempcharList.Add(' ');
                 }
+
+                for (int i = 0; i < tempcharList.Count; i++)
+                {
+                    tempRest += tempcharList[i];
+                }
+
+                EncryptedText += Encrypt(tempRest);
             }
+
+           
 
             return EncryptedText;
         }
@@ -459,7 +472,7 @@ namespace SzyfrPermutacyjny
 
             if (tempcharList.Count != 0)
             {
-                for (int i = 0; i < tempcharList.Count; i++)
+                for (int i = 0; i < keyLenght - tempcharList.Count; i++)
                 {
                     EncryptedText += tempcharList[i];
                 }
