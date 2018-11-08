@@ -6,127 +6,130 @@
         xmlns:local="clr-namespace:SzyfrPermutacyjny"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
-        Title="Permutation Cipher" Height="594" Width="724.4">
+        Title="Permutation Cipher" Height="620.8" Width="724.4">
+   
+    <ScrollViewer>
+        <Border Padding="10">
+        
+            <StackPanel>
+                <TextBlock Margin="0 0 0 20" x:Name="opistextBlock" TextWrapping="Wrap"></TextBlock>
+                <TextBlock Text="Choose your permutation cipher key lenght: (min: 2 max: 9)" FontWeight="Bold"></TextBlock>
+                <ComboBox x:Name="LenghtDropDown" SelectionChanged="LenghtDropDown_SelectionChanged" Margin="0 10 0 20" Padding="3" Width="40" HorizontalAlignment="Left">
+                    <ComboBox.ItemsSource>
+                        <x:Array Type="{x:Type sys:Int32}">
+                            <sys:Int32>2</sys:Int32>
+                            <sys:Int32>3</sys:Int32>
+                            <sys:Int32>4</sys:Int32>
+                            <sys:Int32>5</sys:Int32>
+                            <sys:Int32>6</sys:Int32>
+                            <sys:Int32>7</sys:Int32>
+                            <sys:Int32>8</sys:Int32>
+                            <sys:Int32>9</sys:Int32>
+                        </x:Array>
+                    </ComboBox.ItemsSource>
+                </ComboBox>
 
-    <Border Padding="10">
-        <StackPanel>
+                <TextBlock Text="Fill your key:" FontWeight="Bold" Margin="0 0 0 10"></TextBlock>
+                <Grid>
 
-            <TextBlock Text="Choose your cipher key lenght: (min: 2 max: 10)" FontWeight="Bold"></TextBlock>
-            <ComboBox x:Name="LenghtDropDown" SelectionChanged="LenghtDropDown_SelectionChanged" Margin="5 10 640 20" Padding="3">
-                <ComboBox.ItemsSource>
-                    <x:Array Type="{x:Type sys:Int32}">
-                        <sys:Int32>2</sys:Int32>
-                        <sys:Int32>3</sys:Int32>
-                        <sys:Int32>4</sys:Int32>
-                        <sys:Int32>5</sys:Int32>
-                        <sys:Int32>6</sys:Int32>
-                        <sys:Int32>7</sys:Int32>
-                        <sys:Int32>8</sys:Int32>
-                        <sys:Int32>9</sys:Int32>
-                        <sys:Int32>10</sys:Int32>
-                    </x:Array>
-                </ComboBox.ItemsSource>
-            </ComboBox>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
 
-            <TextBlock Text="Fill your key:" FontWeight="Bold" Margin="0 0 0 10"></TextBlock>
-            <Grid>
-                
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
+                    </Grid.ColumnDefinitions>
 
-                <StackPanel Grid.Column="0">
-                    
-                    <ComboBox x:Name="Key1" SelectionChanged="Key1_SelectionChanged" Padding="3" Margin="5 10  10 5">
-                    </ComboBox>
-                </StackPanel>
+                    <StackPanel Grid.Column="0">
+                        <TextBox TextAlignment="Center" TextChanged="keyTexBox1_TextChanged" x:Name="keyTexBox1" Padding="3" Margin="5 0 5 0" RenderTransformOrigin="0.503,0.5" PreviewTextInput="NumberValidationTextBox"></TextBox>
 
-                <StackPanel Grid.Column="1">
-                    
-                    <ComboBox x:Name="Key2" SelectionChanged="Key2_SelectionChanged" Padding="3" Margin="5 10 10 5">
-                    </ComboBox>
-                </StackPanel>
+                    </StackPanel>
 
-                <StackPanel Grid.Column="2">
-                   
-                    <ComboBox x:Name="Key3" SelectionChanged="Key3_SelectionChanged" Padding="3" Margin="5 10 10 5">
-                    </ComboBox>
-                </StackPanel>
+                    <StackPanel Grid.Column="1">
+                        <TextBox TextAlignment="Center" TextChanged="keyTexBox2_TextChanged" x:Name="keyTexBox2" Padding="3" Margin="5 0 5 0" PreviewTextInput="NumberValidationTextBox"></TextBox>
 
-                <StackPanel Grid.Column="3">
-                    
-                    <ComboBox x:Name="Key4" SelectionChanged="Key4_SelectionChanged" Padding="3" Margin="5 10 10 5">
-                    </ComboBox>
-                </StackPanel>
+                    </StackPanel>
 
-                <StackPanel Grid.Column="4">
-                    
-                    <ComboBox x:Name="Key5" SelectionChanged="Key5_SelectionChanged" Padding="3" Margin="5 10 10 5">
-                    </ComboBox>
-                </StackPanel>
+                    <StackPanel Grid.Column="2">
+                        <TextBox TextAlignment="Center" TextChanged="keyTexBox3_TextChanged" x:Name="keyTexBox3" Padding="3" Margin="5 0 5 0" PreviewTextInput="NumberValidationTextBox"></TextBox>
+                    </StackPanel>
 
-                <StackPanel Grid.Column="5">
-                    
-                    <ComboBox x:Name="Key6" SelectionChanged="Key6_SelectionChanged" Padding="3" Margin="5 10 10 5">
-                    </ComboBox>
-                </StackPanel>
+                    <StackPanel Grid.Column="3">
+                        <TextBox TextAlignment="Center" TextChanged="keyTexBox4_TextChanged" x:Name="keyTexBox4" Padding="3" Margin="5 0 5 0" PreviewTextInput="NumberValidationTextBox"></TextBox>
 
-                <StackPanel Grid.Column="6">
-                   
-                    <ComboBox x:Name="Key7" SelectionChanged="Key7_SelectionChanged" Padding="3" Margin="5 10 10 5">
-                    </ComboBox>
-                </StackPanel>
+                    </StackPanel>
 
-                <StackPanel Grid.Column="7">
-                    
-                    <ComboBox x:Name="Key8" SelectionChanged="Key8_SelectionChanged" Padding="3" Margin="5 10 10 5">
-                    </ComboBox>
-                </StackPanel>
+                    <StackPanel Grid.Column="4">
+                        <TextBox TextAlignment="Center" TextChanged="keyTexBox5_TextChanged" x:Name="keyTexBox5" Padding="3" Margin="5 0 5 0" PreviewTextInput="NumberValidationTextBox"></TextBox>
 
-                <StackPanel Grid.Column="8">
-                    
-                    <ComboBox x:Name="Key9" SelectionChanged="Key9_SelectionChanged" Padding="3" Margin="5 10 10 5">
-                    </ComboBox>
-                </StackPanel>
+                    </StackPanel>
 
-                <StackPanel Grid.Column="9">
-                    
-                    <ComboBox x:Name="Key10" SelectionChanged="Key10_SelectionChanged" Padding="3" Margin="5 10 10 5">
-                    </ComboBox>
-                </StackPanel>
-            </Grid>
+                    <StackPanel Grid.Column="5">
+                        <TextBox TextAlignment="Center" TextChanged="keyTexBox6_TextChanged" x:Name="keyTexBox6" Padding="3" Margin="5 0 5 0" PreviewTextInput="NumberValidationTextBox"></TextBox>
 
-            
-            
-            <!-- Wprowadzanie tekstu -->
+                    </StackPanel>
 
-            <TextBlock Text="Type text you want to encrypt:" FontWeight="Bold" Margin="0 20 0 10"></TextBlock>
-            <TextBox x:Name="TypedTextToEncrypt" IsEnabled="True" Padding="3"></TextBox>
+                    <StackPanel Grid.Column="6">
+                        <TextBox TextAlignment="Center" TextChanged="keyTexBox7_TextChanged" x:Name="keyTexBox7" Padding="3" Margin="5 0 5 0" PreviewTextInput="NumberValidationTextBox"></TextBox>
 
-            <Grid Margin="0 20 0 20">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+                    </StackPanel>
 
-                <StackPanel Grid.Column="0">
-                    <Button x:Name="ApplyButton" Click="ApplyButton_Click" Content="Apply" Margin="100 0 100 0"></Button>
-                </StackPanel>
+                    <StackPanel Grid.Column="7">
+                        <TextBox TextAlignment="Center" TextChanged="keyTexBox8_TextChanged" x:Name="keyTexBox8" Padding="3" Margin="5 0 5 0" PreviewTextInput="NumberValidationTextBox"></TextBox>
 
-                <StackPanel Grid.Column="1">
-                    <Button x:Name="ResetButton" Click="ResetButton_Click" Content="Reset" Margin="100 0 100 0"></Button>
-                </StackPanel>
-            </Grid>
-            
-        </StackPanel>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="8">
+
+                        <TextBox TextAlignment="Center" TextChanged="keyTexBox9_TextChanged" x:Name="keyTexBox9" Padding="3" Margin="5 0 5 0" PreviewTextInput="NumberValidationTextBox"></TextBox>
+                    </StackPanel>
+
+
+                </Grid>
+
+                <TextBlock x:Name="TextBlockRemainingDigits" TextAlignment="Center" Padding="3" Margin="0 5 0 15"></TextBlock>
+
+                <!-- Wprowadzanie tekstu -->
+                <TextBlock Text="Type text you want to encrypt / decrypt:" FontWeight="Bold" Margin="0 0 0 10"></TextBlock>
+                <TextBox x:Name="TypedTextToEncrypt" Height="100" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" IsEnabled="True" AcceptsReturn="True" Padding="3"></TextBox>
+
+                <Grid Margin="0 30 0 5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0">
+                        <Button x:Name="EncryptButton" Click="EncryptButton_Click" Content="Encrypt" Margin="30 0 30 0"></Button>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="3">
+                        <Button x:Name="ResetButton" Click="ResetButton_Click" Content="Reset" Margin="30 0 30 0"></Button>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1">
+                        <Button x:Name="DecryptButton" Click="DecryptButton_Click"  Content="Decrypt" Margin="30 0 30 0"></Button>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="2">
+                        <Button x:Name="LoadFromFileButton" Click="LoadFromFileButton_Click"  Content="Load from file" Margin="30 0 30 0"></Button>
+                    </StackPanel>
+                </Grid>
+
+                <TextBlock x:Name="HintsTextBlock" TextAlignment="Center" Padding="3" Margin="0 5 0 20"></TextBlock>
+
+                <TextBlock Text="Encryption / decryption output:" FontWeight="Bold" Padding="3" Margin="0 0 0 5"></TextBlock>
+                <TextBox x:Name="EncryptedTextBox" Padding="3" IsReadOnly="True" Height="100" TextWrapping="Wrap" VerticalScrollBarVisibility="Auto" ></TextBox>
+                <Button x:Name="SaveToFileButton" Click="SaveToFileButton_Click" Content="Save output to file" Width="150" HorizontalAlignment="Left" Margin="0 10 0 0"></Button>
+            </StackPanel>
+        
     </Border>
+    </ScrollViewer>
 </Window>
